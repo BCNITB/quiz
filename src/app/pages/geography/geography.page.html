@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>geography</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content calss="center">
+  <p>{{ question }}</p>
+  
+  <div class="flex-container">
+    <ion-button (click)="checkAnswer(opt_1)">{{ opt_1 }}</ion-button>
+    <ion-button (click)="checkAnswer(opt_2)">{{ opt_2 }}</ion-button>
+    <ion-button (click)="checkAnswer(opt_3)">{{ opt_3 }}</ion-button>
+  </div>
+
+</ion-content>

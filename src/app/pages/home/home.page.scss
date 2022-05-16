@@ -1,0 +1,13 @@
+ion-content p {
+    font-size: 1.25em;
+    padding: 0 2vw;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+
+    gap: 2vw;;
+}
