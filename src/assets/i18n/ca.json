@@ -1,0 +1,18 @@
+{
+    "SEETINGS": {
+        "LANGUAGE": "Configuració",
+        "SELECTED": "Selecciona un idioma",
+        "SAVELANGUAGE": "Guardar"
+    },
+    "HOME": {
+        "WELLCOME": "Benvingut a l'aplicació de preguntes, si et un <i>sabelotodo</i> o una <i>marisabidilla</i> aquesta és la teva aplicació.",
+        "PHRASE": "Només cal que triïs una de les opcions per començar a jugar. Endavant!",
+        "GEO": "Geografia"
+    },
+
+    "TITLE": "Hello sir",
+    "TITLE_2": "Hello {{value}}",
+    "description": "Ooohh .... did you just translate this text ?",
+    "data": {
+    "name": "My name is {{name_value}}"}
+}

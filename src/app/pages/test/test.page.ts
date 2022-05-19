@@ -4,45 +4,48 @@ import { Globalization } from '@ionic-native/globalization/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.page.html',
-  styleUrls: ['./settings.page.scss'],
+  selector: 'app-test',
+  templateUrl: './test.page.html',
+  styleUrls: ['./test.page.scss'],
 })
-export class SettingsPage implements OnInit {
+export class TestPage implements OnInit {
 
-  public language:    string;
-  public settLang:    string;
-  public selectLang:  string;
-  public saveLang:    string;
+  public title: string;
+  public title_2: string;
+  public description: string;
+  public name: string;
+  public language: string;
 
   constructor(private globalization: Globalization, private _translate: TranslateService) { }
 
   ngOnInit() {
   }
 
-  ionViewDidEnter(){
-    this.getDeviceLanguage();
+  ionViewDidEnter(): void {
+    this.getDeviceLanguage()
   }
 
-  _initialiseTranslation() {
-    this._translate.get("SEETINGS.LANGUAGE").subscribe((res: string) =>{
-      this.settLang = res;
+  _initialiseTranslation(): void {
+    this._translate.get('TITLE').subscribe((res: string) => {
+      this.title = res;
     });
-    
-    this._translate.get("SEETINGS.SELECTED").subscribe((res: string) =>{
-      this.selectLang = res;
+    this._translate.get('description').subscribe((res: string) => {
+      this.description = res;
     });
-    
-    this._translate.get('SEETINGS.SAVELANGUAGE').subscribe((res: string) => {
-      this.saveLang = res;
+    this._translate.get('TITLE_2', { value: 'John' }).subscribe((res: string) => {
+      this.title_2 = res;
     });
+    this._translate.get('data.name', { name_value: 'Marissa Mayer' }).subscribe((res: string) => {
+      this.name = res;
+    });
+
   }
 
-  public changeLanguage() {
+  public changeLanguage(): void {
     this._translateLanguage();
   }
 
-  _translateLanguage() {
+  _translateLanguage(): void {
     this._translate.use(this.language);
     this._initialiseTranslation();
   }
@@ -72,11 +75,4 @@ export class SettingsPage implements OnInit {
         .catch(e => {console.log(e);});
     }
   }
-
-  //Save Language 
-  saveLanguage() {
-    this.getDeviceLanguage();
-    window.localStorage.setItem('language', this.language);
-  }
-
 }

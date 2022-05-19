@@ -1,40 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Configuració</ion-title>
+    <ion-title>{{ settLang }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Tria l'idioma de l'aplicació</p>
-
-  <form>
-    <ion-item>
-      <ion-label>Català</ion-label>
-      <ion-radio slot="start"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Castellano</ion-label>
-      <ion-radio slot="start"></ion-radio>
-      <div id="es-flag"></div>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Galego</ion-label>
-      <ion-radio slot="start"></ion-radio>
-      <div id="gl-flag"></div>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Euskera</ion-label>
-      <ion-radio slot="start"></ion-radio>
-      <div id="eu-flag"></div>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>English</ion-label>
-      <ion-radio slot="start"></ion-radio>
-      <div id="en-flag"></div>
-    </ion-item>
-  </form>
+  <ion-item>
+    <ion-label position="floating">{{ selectLang }}</ion-label><hr />
+    <ion-select [(ngModel)]="language" [value]="language" (ionChange)="changeLanguage()">
+      <ion-select-option value="en">English</ion-select-option>
+      <ion-select-option value="es">Castellano</ion-select-option>
+      <ion-select-option value="ca">Català</ion-select-option>
+      <ion-select-option value="gl">Galego</ion-select-option>
+      <ion-select-option value="eu">Euskera</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-button expand="block" (click)="saveLanguage()">{{ saveLang }}</ion-button>
+  
+      
 </ion-content>
