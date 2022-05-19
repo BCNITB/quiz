@@ -75,7 +75,6 @@ export class SettingsPage implements OnInit {
 
   //Save Language 
   saveLanguage() {
-    this.getDeviceLanguage();
     window.localStorage.setItem('language', this.language);
   }
 

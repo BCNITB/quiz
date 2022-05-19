@@ -8,11 +8,5 @@
         "WELLCOME": "Bienvenido a la aplicación de preguntas, si eres un <i>sabelotodo</i> o una <i>marisabidilla</i> esta es tu aplicación.",
         "PHRASE": "Sólo te hace falta escoger una de las opciones para empezar a jugar. ¡Adelante!",
         "GEO": "Geografía"
-    },
-
-    "TITLE": "Hola señor",
-    "TITLE_2": "Hola {{value}}",
-    "description": "Ooohh .... acabas de traducir este texto?",
-    "data": {
-    "name": "Me llamo {{name_value}}"}
     }
+}

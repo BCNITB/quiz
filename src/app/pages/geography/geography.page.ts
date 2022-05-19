@@ -3,7 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 
 import { Questions } from 'src/app/interfaces/questions';
-import { QUESTIONS } from 'src/app/enums/data.geography';
+import { CA_QUESTIONS } from 'src/app/enums/ca.geography';
+import { EN_QUESTIONS } from 'src/app/enums/en.geography';
+import { ES_QUESTIONS } from 'src/app/enums/es.geography';
+import { EU_QUESTIONS } from 'src/app/enums/eu.geography';
+import { GL_QUESTIONS } from 'src/app/enums/gl.geography';
+
 
 @Component({
   selector: 'app-geography',
@@ -14,28 +19,51 @@ export class GeographyPage implements OnInit {
 
   questions:  Questions[]=[];
 
+  language:   string;
   question:   string;
-  answer: string;
+  answer:     string;
   opt_1:      string;
   opt_2:      string;
   opt_3:      string;
   baseUrl:    string;
   
-  randNum:  number;
-  try:      number;
-  score:    number;
+  randNum:    number;
+  try:        number;
+  score:      number;
 
-  tempString: string;
-  tempNum2: number;
-  tempNum: number;
-  num:number;
+  /*tempString: string;
+  tempNum2:   number;
+  tempNum:  number;*/
+  num:        number;
   //memoryArray:number[];
 
-  constructor(public quiz: QuizService) {
-    this.questions=QUESTIONS.slice(0);
-  }
+  constructor(public quiz: QuizService) { }
 
   ngOnInit() {
+
+    this.language = window.localStorage.getItem('language');
+    
+    switch(this.language){
+      case 'ca':
+        this.questions=CA_QUESTIONS.slice(0);
+        break;
+      case 'en':
+        this.questions=EN_QUESTIONS.slice(0);
+        break;
+      case 'es':
+        this.questions=ES_QUESTIONS.slice(0);
+        break;
+      case 'eu':
+        this.questions=EU_QUESTIONS.slice(0);
+        break;
+      case 'gl':
+        this.questions=GL_QUESTIONS.slice(0);
+        break;
+      default:
+        this.questions=CA_QUESTIONS.slice(0);
+        break;
+    }
+
     this.randNum=this.calcRandom(1,8);
     this.initializeApp();
   }

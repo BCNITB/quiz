@@ -1,0 +1,12 @@
+{
+    "SEETINGS": {
+        "LANGUAGE": "Ezarpena",
+        "SELECTED": "Aukeratu hizkuntza bat",
+        "SAVELANGUAGE": "Gorde"
+    },
+    "HOME": {
+        "WELLCOME": "Ongi etorri galdetegien aplikaziora, <i>dakiena</i> edo <i>bluestocking</i> bazara, hau da zure aplikazioa.",
+        "PHRASE": "Jokatzen hasteko aukeretako bat bakarrik aukeratu behar duzu. Segi aurrera!",
+        "GEO": "Geografia"
+    }
+}

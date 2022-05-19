@@ -4,10 +4,9 @@
         "SELECTED": "Select a Language",
         "SAVELANGUAGE": "Save"
     },
-
-    "TITLE": "Hello sir",
-    "TITLE_2": "Hello {{value}}",
-    "description": "Ooohh .... did you just translate this text ?",
-    "data": {
-    "name": "My name is {{name_value}}"}
+    "HOME": {
+        "WELLCOME": "Welcome to a quiz app, if you have an elephant memory, this is our game!.",
+        "PHRASE": "Just choose an option to start the game. Let's play!",
+        "GEO": "Geography"
     }
+}

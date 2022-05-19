@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
-import { SettingsPage } from '../settings/settings.page';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +10,7 @@ import { SettingsPage } from '../settings/settings.page';
 export class HomePage implements OnInit {
 
 
-  language: string; 
+  language:     string; 
   wellcomeLang: string;
   phraseLang:   string;
   geoLang:      string;
@@ -19,10 +18,11 @@ export class HomePage implements OnInit {
   constructor(private _translate: TranslateService) { }
 
   ngOnInit() {
-    
+    this.language = window.localStorage.getItem('language');
+    this._translateLanguage();
   }
 
-  /*_initialiseTranslation() {
+  _initialiseTranslation() {
     this._translate.get("HOME.WELLCOME").subscribe((res: string) =>{
       this.wellcomeLang = res;
     });
@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
     this._initialiseTranslation();
   }
 
-  _initTranslate(language) {
+  /*_initTranslate(language) {
     // Set the default language for translation strings, and the current language.
     this._translate.setDefaultLang('en');
     if (language) {
