@@ -40,17 +40,4 @@ export class HomePage implements OnInit {
     this._translate.use(this.language);
     this._initialiseTranslation();
   }
-
-  /*_initTranslate(language) {
-    // Set the default language for translation strings, and the current language.
-    this._translate.setDefaultLang('en');
-    if (language) {
-      this.language = language;
-    }
-    else {
-      // Set your language here
-      this.language = 'en';
-    }
-    this._translateLanguage();
-  }*/
 }

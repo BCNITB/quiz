@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//import { Globalization } from '@ionic-native/globalization/ngx';
+import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -56,7 +56,7 @@ export class SettingsPage implements OnInit {
     }
     else {
       // Set your language here
-      this.language = 'es';
+      this.language = 'en';
     }
     this._translateLanguage();
   }
@@ -64,6 +64,13 @@ export class SettingsPage implements OnInit {
   getDeviceLanguage() {
     if (window.Intl && typeof window.Intl === 'object') {
       this._initTranslate(navigator.language)
+    }
+    else {
+      if (window.Intl && typeof window.Intl === 'object') {
+        console.log('API available');
+        console.log(navigator.language);
+        this._initTranslate(navigator.language);
+    }
     }
     /*else {
       this.globalization.getPreferredLanguage()
