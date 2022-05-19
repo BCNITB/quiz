@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Globalization } from '@ionic-native/globalization/ngx';
+//import { Globalization } from '@ionic-native/globalization/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -15,9 +15,10 @@ export class SettingsPage implements OnInit {
   public selectLang:  string;
   public saveLang:    string;
 
-  constructor(private globalization: Globalization, private _translate: TranslateService) { }
+  constructor(private _translate: TranslateService) { }
 
   ngOnInit() {
+    //this.language='ca';
   }
 
   ionViewDidEnter(){
@@ -55,7 +56,7 @@ export class SettingsPage implements OnInit {
     }
     else {
       // Set your language here
-      this.language = 'en';
+      this.language = 'es';
     }
     this._translateLanguage();
   }
@@ -64,13 +65,13 @@ export class SettingsPage implements OnInit {
     if (window.Intl && typeof window.Intl === 'object') {
       this._initTranslate(navigator.language)
     }
-    else {
+    /*else {
       this.globalization.getPreferredLanguage()
         .then(res => {
           this._initTranslate(res.value)
         })
         .catch(e => {console.log(e);});
-    }
+    }*/
   }
 
   //Save Language 
