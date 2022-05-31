@@ -15,19 +15,22 @@ export class GeographyPage implements OnInit {
   questions:  Questions[]=[];
 
   question:   string;
-  answer: string;
+  answer:     string;
   opt_1:      string;
   opt_2:      string;
   opt_3:      string;
   baseUrl:    string;
   
-  randNum:  number;
-  try:      number;
-  score:    number;
+  randNum:    number;
+  try:        number;
+  score:      number;
+
+  isGuessed:  boolean=true;
+  isTried:    boolean=true;
 
   tempString: string;
-  tempNum2: number;
-  tempNum: number;
+  tempNum2:   number;
+  tempNum:    number;
   num:number;
   //memoryArray:number[];
 
@@ -71,7 +74,7 @@ export class GeographyPage implements OnInit {
       }
     }
 
-    this.nextQuestion();
+    this.checkMoreQuestions();
 
     //this.tempString=userAnswer;
     //this.tempNum=this.score;//this.quiz.getGuessed(this.questions[this.randNum]);
@@ -79,30 +82,51 @@ export class GeographyPage implements OnInit {
   }
 
   nextQuestion(){
+    
     this.randNum = 0;
     this.randNum = this.calcRandom(1,8);
 
     let isGuessed = this.quiz.getGuessed(this.questions[this.randNum]);
-    let maxTries = 0;
-
-    while(isGuessed==1){
-      if(maxTries == 16){
-        this.finishGame();
-      }
-
-      this.randNum = this.calcRandom(1,8); 
-
-      isGuessed = this.quiz.getGuessed(this.questions[this.randNum]);
-      ++maxTries;
+    
+    
+    if(isGuessed == 1){
+      this.randNum = this.calcRandom(1,8);
     }
 
     let tries = this.quiz.getTries(this.questions[this.randNum]);
 
-    if(tries == 3){
+    if(tries == 2){
       this.randNum = this.calcRandom(1,8);
     }
 
     this.initializeApp();
+  }
+
+  checkMoreQuestions(){
+    while(this.isGuessed && this.isTried){
+      for(let i=0; this.questions.length; i++){
+        let j;
+        let k;
+
+        if(this.questions[i].guessed==1){
+          ++j;
+        }
+
+        if(this.questions[i].tries==2){
+          ++k;
+        }
+        
+        if(j==(this.questions.length-1)){
+          this.isGuessed=false;
+        }
+
+        if(k==(this.questions.length-1)){
+          this.isTried=false;
+        }
+      }
+
+      this.nextQuestion();
+    }
   }
 
   finishGame(){
