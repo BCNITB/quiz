@@ -1,13 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Configuració</ion-title>
+    <ion-title [translate]="'SETTINGS.TITLE'"></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Tria l'idioma de l'aplicació</p>
+  
+  <ion-item>
+    <ion-label position="floating" [translate]="'SETTINGS.LBL'"></ion-label>
+    <ion-select [(ngModel)]="language" [value]="language" (ionChange)="changeLanguage()">
+      <ion-select-option value="ca">Català</ion-select-option>
+      <ion-select-option value="es">Español</ion-select-option>
+      <ion-select-option value="eu">Euskara</ion-select-option>
+      <ion-select-option value="gl">Galego</ion-select-option>
+    </ion-select>
+  </ion-item>
 
-  <form>
+  <ion-button [translate]="'SETTINGS.BTN'" expand="block" (click)="save()"></ion-button>
+  
+  <!--<form>
     <ion-item>
       <ion-label>Català</ion-label>
       <ion-radio slot="start"></ion-radio>
@@ -36,5 +47,6 @@
       <ion-radio slot="start"></ion-radio>
       <div id="en-flag"></div>
     </ion-item>
-  </form>
+  </form>-->
+
 </ion-content>

@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title [translate]="'HOME.TITLE'"></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Benvinguta a l'aplicació de preguntes, si et un <i>sabelotodo</i> o una <i>marisabidilla</i> aquesta és la teva aplicació.</p>
-  <p>Només cal que triïs una de les opcions per començar a jugar. Endavant!</p>
+  <p [translate]="'HOME.WELCOME_01'"></p>
+  <p [translate]="'HOME.WELCOME_02'"></p>
 
   <div class="content">
-    <ion-button routerLink="/geography" routerDirection="forward">Geografia</ion-button>
+    <ion-button routerLink="/geography" routerDirection="forward" [translate]="'HOME.BTN_01'"></ion-button>
     <ion-button>Histporia</ion-button>
   </div>
 </ion-content>

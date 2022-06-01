@@ -1,0 +1,18 @@
+{
+    "SETTINGS": {
+        "TITLE": "Configuración",
+        "LBL": "Selecciona un idioma",
+        "BTN": "Guardar"
+    },
+    "HOME":{
+        "TITLE": "Inicio",
+        "WELCOME_01":"Bienvenido a la aplicación de preguntas, si te encanta el Trivial o sabes todas las respuestas a las pregiuntas de tu proge, esta es tu aplicación.",
+        "WELCOME_02": "Sólo tiene que escoger una de las opciones para empezar a jugar. ¡Adelante!",
+        "BTN_01": "Geografía"
+    },
+    "TITLE": "Hola señor",
+    "TITLE_2": "Hola {{value}}",
+    "description": "Ooohh .... acabas de traducir este texto?",
+    "data": {
+    "name": "Me llamo {{name_value}}"}
+    }

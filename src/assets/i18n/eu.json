@@ -1,0 +1,18 @@
+{
+    "SETTINGS": {
+        "TITLE": "Ezarpena",
+        "LBL": "Aukeratu hizkuntza bat",
+        "BTN": "Gorde"
+    },
+    "HOME":{
+        "TITLE": "Hasi",
+        "WELCOME_01":"Ongi etorri galdera aplikaziora, Trivial maite baduzu edo zure gurasoen galderen erantzun guztiak ezagutzen badituzu, hau da zure aplikazioa.",
+        "WELCOME_02": "Jokatzen hasteko aukeretako bat aukeratu besterik ez duzu egin behar. Aurrera!",
+        "BTN_01": "Geografia"
+    },
+    "TITLE": "Hello sir",
+    "TITLE_2": "Hello {{value}}",
+    "description": "Ooohh .... did you just translate this text ?",
+    "data": {
+    "name": "My name is {{name_value}}"}
+}

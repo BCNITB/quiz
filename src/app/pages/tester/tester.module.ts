@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SettingsPageRoutingModule } from './settings-routing.module';
+import { TesterPageRoutingModule } from './tester-routing.module';
 
-import { SettingsPage } from './settings.page';
+import { TesterPage } from './tester.page';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingsPageRoutingModule,
+    TesterPageRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -30,6 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  declarations: [SettingsPage]
+  declarations: [TesterPage]
 })
-export class SettingsPageModule {}
+export class TesterPageModule {}
