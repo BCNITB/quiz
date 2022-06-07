@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>geography</ion-title>
+    <ion-title [translate]="'GEO.TITLE'"></ion-title>
   </ion-toolbar>
 </ion-header>
   
@@ -8,9 +8,16 @@
   <p>{{ question }}</p>
   
   <div class="flex-container">
-    <ion-button (click)="checkAnswer(opt_1)">{{ opt_1 }}</ion-button>
-    <ion-button (click)="checkAnswer(opt_2)">{{ opt_2 }}</ion-button>
-    <ion-button (click)="checkAnswer(opt_3)">{{ opt_3 }}</ion-button>
+    <ion-button (click)="getUserAnswer(opt_1)">{{ opt_1 }}</ion-button>
+    <ion-button (click)="getUserAnswer(opt_2)">{{ opt_2 }}</ion-button>
+    <ion-button (click)="getUserAnswer(opt_3)">{{ opt_3 }}</ion-button>
   </div>
+
+  <div *ngIf="countClicks>0">
+    <p [translate]="'SCORE'" [translateParams]="{ value: score }"></p>
+    <p [translate]="'CLICKS'" [translateParams]="{ value: guessRatio }"></p>
+  </div>
+
+  
 
 </ion-content>

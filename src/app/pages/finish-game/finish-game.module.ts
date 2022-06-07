@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { GeographyPageRoutingModule } from './geography-routing.module';
+import { FinishGamePageRoutingModule } from './finish-game-routing.module';
 
-import { GeographyPage } from './geography.page';
+import { FinishGamePage } from './finish-game.page';
 
-//LANGUAGE
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -22,15 +21,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     FormsModule,
     IonicModule,
-    GeographyPageRoutingModule,
+    FinishGamePageRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }),
+    })
   ],
-  declarations: [GeographyPage]
+  declarations: [FinishGamePage]
 })
-export class GeographyPageModule {}
+export class FinishGamePageModule {}

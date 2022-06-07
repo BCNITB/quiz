@@ -18,9 +18,14 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
-  },  {
+  },
+  {
     path: 'tester',
     loadChildren: () => import('./pages/tester/tester.module').then( m => m.TesterPageModule)
+  },
+  {
+    path: 'finish-game',
+    loadChildren: () => import('./pages/finish-game/finish-game.module').then( m => m.FinishGamePageModule)
   }
 
 ];

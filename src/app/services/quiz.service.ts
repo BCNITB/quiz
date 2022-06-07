@@ -7,6 +7,10 @@ export class QuizService {
 
   constructor() { }
 
+  getId(value){
+    return value.id;
+  }
+
   getQuestion(value){
     return value.question;
   }
@@ -38,7 +42,7 @@ export class QuizService {
   }
 
   setScore(value, point){
-    value.points + point;
+    value.points = value.points + point;
   }
 
   getScore(value){

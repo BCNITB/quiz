@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
+import { FinishGamePage } from '../finish-game/finish-game.page';
+
+//LANGUAGE
+import { TranslateService } from '@ngx-translate/core';
 
 import { QuizService } from 'src/app/services/quiz.service';
 
+//QUESTIONS
 import { Questions } from 'src/app/interfaces/questions';
-import { QUESTIONS } from 'src/app/enums/data.geography';
+import { CA_QUESTIONS } from 'src/app/enums/ca.data.geography';
+import { ES_QUESTIONS } from 'src/app/enums/es.data.geography';
+import { EU_QUESTIONS } from 'src/app/enums/eu.data.geography';
+import { GL_QUESTIONS } from 'src/app/enums/gl.data.geography';
 
 @Component({
   selector: 'app-geography',
@@ -14,37 +24,91 @@ export class GeographyPage implements OnInit {
 
   questions:  Questions[]=[];
 
-  question:   string;
-  answer:     string;
-  opt_1:      string;
-  opt_2:      string;
-  opt_3:      string;
-  baseUrl:    string;
+  language:     string;
+  question:     string;
+  answer:       string;
+  opt_1:        string;
+  opt_2:        string;
+  opt_3:        string;
+  baseUrl:      string;
   
-  randNum:    number;
-  try:        number;
-  score:      number;
+  randNum:      number;
+  score:        number;
+  countClicks:  number;
+  countGuess:   number;
+  guessRatio:   number;
 
-  isGuessed:  boolean=true;
-  isTried:    boolean=true;
+  constructor(
+    public quiz: QuizService,
+    private _translate: TranslateService,
+    private navCtrl: NavController,
+  ) {
+    this.language="";
+    this.score=0;
+    this.countClicks=0;
+    this.countGuess=0;
+    this.guessRatio=0;
 
-  tempString: string;
-  tempNum2:   number;
-  tempNum:    number;
-  num:number;
-  //memoryArray:number[];
+    this.language=window.localStorage.getItem('language');
+    
+    if(this.language==""){
+      this.getDeviceLanguage();
+    } else {
+      this._translate.use(this.language);;
+    }
+    
+    switch(this.language){
+      case "ca":
+        this.questions=CA_QUESTIONS.slice(0);
+        break;
+      
+      case "es":
+        this.questions=ES_QUESTIONS.slice(0);
+        break;
 
-  constructor(public quiz: QuizService) {
-    this.questions=QUESTIONS.slice(0);
+      case "eu":
+        this.questions=EU_QUESTIONS.slice(0);
+        break;
+
+      case "gl":
+        this.questions=GL_QUESTIONS.slice(0);
+        break;
+    }
   }
 
   ngOnInit() {
-    this.randNum=this.calcRandom(1,8);
+    this.randNum=this.calcRandom(0,this.questions.length-1);
     this.initializeApp();
   }
 
-  calcRandom(a, b){
-    return Math.round(Math.random() * (b-a) + parseInt(a,10));
+  _translateLanguage(): void {
+    this._translate.use(this.language);
+  }
+
+  _initTranslate(language) {
+    // Set the default language for translation strings, and the current language.
+    this._translate.setDefaultLang('ca');
+    if (language) {
+      this.language = language;
+    } else {
+      // Set your language here
+      this.language = 'ca';
+    }
+    this._translateLanguage();
+  }
+
+  getDeviceLanguage() {
+    if (window.Intl && typeof window.Intl === 'object') {
+      this._initTranslate(navigator.language)
+    }
+    else {
+      this._initTranslate(this._translate.getDefaultLang());
+    }
+  }
+
+  calcRandom(min, max){
+    return Math.floor(Math.random() * (max - min)) + min;
+    //return Math.round(Math.random() * (b-a) + parseInt(a,2*this.questions.length));
   }
 
   initializeApp(){
@@ -56,140 +120,99 @@ export class GeographyPage implements OnInit {
     this.opt_3 = this.quiz.getPossibilities(this.questions[this.randNum])[2];
   }
   
-  checkAnswer(value){
+  getUserAnswer(value){
+    this.countClicks++;
+
     let userAnswer = value;
+    
+    this.checkAnswer(userAnswer);
+  }
+
+  checkAnswer(userAnswer){
+    this.countClicks++;
+    
+    let correctAnswer=this.quiz.getAnswer(this.questions[this.randNum]);
+
+    
+    if(correctAnswer==userAnswer){
+      this.quiz.setGuessed(this.questions[this.randNum]);
+    }
+
+    this.countTry(userAnswer);
+  }
+
+  countTry(userAnswer){
+    let counter=this.quiz.getTries(this.questions[this.randNum]);
+
+    
     this.quiz.setTries(this.questions[this.randNum]);
 
-    if(userAnswer == this.answer){
-      
-      this.quiz.setGuessed(this.questions[this.randNum]);
-      this.try = this.quiz.getTries(this.questions[this.randNum]);
-      
-      if(this.try == 1){
-        this.quiz.setScore(this.questions[this.randNum], 3);
-        this.score+3;
-      } else if(this.try == 2){
-        this.quiz.setScore(this.questions[this.randNum], 1);
-        ++this.score;
+    this.addScore(userAnswer);
+  }
+
+  addScore(userAnswer){
+    let correctAnswer=this.quiz.getAnswer(this.questions[this.randNum]);
+    let countTries=this.quiz.getTries(this.questions[this.randNum]);
+
+    if(userAnswer==correctAnswer){
+      this.countGuess++;
+
+      if(countTries==1){
+        this.quiz.setScore(this.questions[this.randNum], 5);
+        this.score=this.score+5;
+      } else if(countTries==2){
+        this.quiz.setScore(this.questions[this.randNum], 2);
+        this.score=this.score+2;
       }
     }
 
-    this.checkMoreQuestions();
-
-    //this.tempString=userAnswer;
-    //this.tempNum=this.score;//this.quiz.getGuessed(this.questions[this.randNum]);
-    //this.tempNum2=this.quiz.getGuessed(this.questions[this.randNum]);
+    this.guessRatio=Math.round(200*(this.countGuess/this.countClicks));
+    this.checkForMoreQuestions();
   }
 
   nextQuestion(){
     
     this.randNum = 0;
-    this.randNum = this.calcRandom(1,8);
+    this.randNum = this.calcRandom(0,this.questions.length-1);
 
-    let isGuessed = this.quiz.getGuessed(this.questions[this.randNum]);
+    let guessed = this.quiz.getGuessed(this.questions[this.randNum]);
     
     
-    if(isGuessed == 1){
-      this.randNum = this.calcRandom(1,8);
+    if(guessed == 1){
+      this.nextQuestion();
     }
 
     let tries = this.quiz.getTries(this.questions[this.randNum]);
 
-    if(tries == 2){
-      this.randNum = this.calcRandom(1,8);
+    if(tries == 1){
+      this.nextQuestion();
     }
 
     this.initializeApp();
   }
 
-  checkMoreQuestions(){
-    while(this.isGuessed && this.isTried){
-      for(let i=0; this.questions.length; i++){
-        let j;
-        let k;
+  checkForMoreQuestions(){
+    let count=0;
 
-        if(this.questions[i].guessed==1){
-          ++j;
-        }
-
-        if(this.questions[i].tries==2){
-          ++k;
-        }
-        
-        if(j==(this.questions.length-1)){
-          this.isGuessed=false;
-        }
-
-        if(k==(this.questions.length-1)){
-          this.isTried=false;
-        }
+    for(let i=0;i<this.questions.length; i++){
+      if(this.quiz.getGuessed(this.questions[i])==1 || this.quiz.getTries(this.questions[i])==1){
+        count++;
       }
-
-      this.nextQuestion();
     }
-  }
 
-  finishGame(){
+    console.log("QUESTIONS:", count);
 
-  }
-  /*checkAnswer(value){
-    let p = this.randNum;
-    
-    if(value==this.quiz.correctAnswer(this.questions[p])){
-      this.quiz.setGuessed(this.questions[p]);
-      this.quiz.setTries(this.questions[p]);
-
-      this.try = this.quiz.getTries(this.questions[p]);
-
-      if(this.try==1){
-        this.quiz.setScore(this.questions[p], 3);
-      } else {
-        this.quiz.setScore(this.questions[p], 1);
-      }
+    if(count==this.questions.length-1){
+      this.endGame(this.score, this.guessRatio);
     } else {
-      this.quiz.setTries(this.questions[p]);
-    }
-
-    this.randNum=0;
-
-    this.nextQuestion();
-  }
-
-  nextQuestion(){
-    let p = this.calcRandom(1,3);
-
-    if(this.checkGuessed(this.questions[p])){
       this.nextQuestion();
     }
-
-    if(this.checkTries(this.questions[p])){
-      this.nextQuestion();
-    }
-    
-
-    this.question = this.quiz.showQuestion(this.questions[p]);
-    this.opt_1 = this.quiz.showPossibilities(this.questions[p])[0];
-    this.opt_2 = this.quiz.showPossibilities(this.questions[p])[1];
-    this.opt_3 = this.quiz.showPossibilities(this.questions[p])[2];
   }
 
-  checkGuessed(value){
-    if(this.quiz.getGuessed(value)){
-      return true;
-    }
+  endGame(score, ratio){
+    window.localStorage.setItem('score', score);
+    window.localStorage.setItem('ratio', ratio);
 
-    return false;
+    this.navCtrl.navigateForward('/finish-game');
   }
-
-  checkTries(value){
-    if(this.quiz.getTries(this.questions[value]) == 3){
-      return true;
-    }
-
-    return false;
-  }
-
-  finishGame(){
-
-  }*/
 }

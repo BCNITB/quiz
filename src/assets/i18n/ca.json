@@ -1,18 +1,23 @@
 {
     "SETTINGS": {
-        "TITLE": "Configuració",
-        "LBL": "Tria un idioma",
-        "BTN": "Guardar"
+        "TITLE":    "Configuració",
+        "LBL":      "Tria un idioma",
+        "BTN":      "Guardar"
     },
     "HOME":{
-        "TITLE": "Inici",
-        "WELCOME_01":"Benvingut a l'aplicació de preguntes, si t'agrada el Trivial o saps totes les respostes a les pregiuntes del teu proge, aquesta és la teva aplicació.",
-        "WELCOME_02": "Només cal que triïs una de les opcions per començar a jugar. Endavant!",
-        "BTN_01": "Geografia"
+        "TITLE":        "Inici",
+        "WELCOME_01":   "Benvingut a l'aplicació de preguntes, si t'agrada el Trivial o saps totes les respostes a les pregiuntes del teu proge, aquesta és la teva aplicació.",
+        "WELCOME_02":   "Només cal que triïs una de les opcions per començar a jugar. Endavant!",
+        "BTN_01":       "Geografia"
     },
-    "TITLE": "Hola señor",
-    "TITLE_2": "Hola {{value}}",
-    "description": "Ooohh .... acabas de traducir este texto?",
-    "data": {
-    "name": "Me llamo {{name_value}}"}
-    }
+    "GEO":{
+        "TITLE": "Geografia"
+    },
+    "FINISH":{
+        "TITLE":    "FINAL DEL JOC",
+        "BTN":      "Tornar a jugar"
+    },
+    "SCORE":    "La teva puntuació és: {{ value }}",
+    "CLICKS":   "El teu percentatge d'encert és: {{ value }}%",
+    "EXITBTN":  "Sortir"
+}

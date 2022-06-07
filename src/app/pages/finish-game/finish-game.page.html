@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title [translate]="'FINISH.TITLE'"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p [translate]="'SCORE'" [translateParams]="{ value: score }"></p>
+      <p [translate]="'CLICKS'" [translateParams]="{ value: ratio }"></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+    <ion-button (click)="newGame()" [translate]="'FINISH.BTN'" expand="block"></ion-button>
+    <ion-button (click)="exitGame()" [translate]="'EXITBTN'" expand="block"></ion-button>
+  </ion-footer>
+</ion-content>

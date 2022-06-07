@@ -10,9 +10,14 @@
         "WELCOME_02": "Jokatzen hasteko aukeretako bat aukeratu besterik ez duzu egin behar. Aurrera!",
         "BTN_01": "Geografia"
     },
-    "TITLE": "Hello sir",
-    "TITLE_2": "Hello {{value}}",
-    "description": "Ooohh .... did you just translate this text ?",
-    "data": {
-    "name": "My name is {{name_value}}"}
+    "GEO":{
+        "TITLE": "Geografia"
+    },
+    "FINISH":{
+        "TITLE":    "JOKOAREN AMAIERA",
+        "BTN":      "Berriz jokatu"
+    },
+    "SCORE": "Zure puntuazioa hau da: {{ value }}",
+    "CLICKS": "Zure arrakastaren ehunekoa hau da: {{ value }}%",
+    "EXITBTN":  "Utzi"
 }

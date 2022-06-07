@@ -10,9 +10,14 @@
         "WELCOME_02": "Só tes que escoller unha das opcións para comezar a xogar. Adiante!",
         "BTN_01": "Xeografía"
     },
-    "TITLE": "Hola señor",
-    "TITLE_2": "Hola {{value}}",
-    "description": "Ooohh .... acabas de traducir este texto?",
-    "data": {
-    "name": "Me llamo {{name_value}}"}
-    }
+    "GEO":{
+        "TITLE": "Xeografía"
+    },
+    "FINISH":{
+        "TITLE":    "FIN DO XOGO",
+        "BTN":      "Xoga de novo"
+    },
+    "SCORE": "A túa puntuación é: {{ value }}",
+    "CLICKS": "A súa porcentaxe de éxito é: {{ value }}%",
+    "EXITBTN":  "Saír"
+}
