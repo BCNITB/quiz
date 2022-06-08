@@ -19,5 +19,5 @@
     },
     "SCORE":    "Tu puntuación es: {{ value }}",
     "CLICKS":   "Tu porcentaje de acierto es: {{ value }}%",
-    "EXITBTN":  "Salir",
+    "EXITBTN":  "Salir"
 }
