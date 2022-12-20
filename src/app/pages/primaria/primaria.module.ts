@@ -4,9 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { GeographyPageRoutingModule } from './geography-routing.module';
+import { PrimariaPageRoutingModule } from './primaria-routing.module';
 
-import { GeographyPage } from './geography.page';
+import { PrimariaPage } from './primaria.page';
+
+// Components
+import { ComponentsModule } from 'src/app/components/components.module';
 
 //LANGUAGE
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -22,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     FormsModule,
     IonicModule,
-    GeographyPageRoutingModule,
+    PrimariaPageRoutingModule,
+    ComponentsModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -31,6 +35,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  declarations: [GeographyPage]
+  declarations: [PrimariaPage]
 })
-export class GeographyPageModule {}
+export class PrimariaPageModule {}

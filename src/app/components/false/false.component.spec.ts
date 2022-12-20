@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { GeographyPage } from './geography.page';
+import { FalseComponent } from './false.component';
 
-describe('GeographyPage', () => {
-  let component: GeographyPage;
-  let fixture: ComponentFixture<GeographyPage>;
+describe('FalseComponent', () => {
+  let component: FalseComponent;
+  let fixture: ComponentFixture<FalseComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeographyPage ],
+      declarations: [ FalseComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GeographyPage);
+    fixture = TestBed.createComponent(FalseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

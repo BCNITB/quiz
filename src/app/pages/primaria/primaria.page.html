@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title [translate]="'GEO.TITLE'"></ion-title>
+    <ion-title [translate]="'PRIM.TITLE'"></ion-title>
   </ion-toolbar>
 </ion-header>
-  
-<ion-content calss="center">
+
+<ion-content class="center">
+  <app-true *ngIf="showCorrect"></app-true>
+  <app-false *ngIf="showWrong"></app-false>
+
   <p>{{ question }}</p>
   
   <div class="flex-container">
@@ -17,7 +20,4 @@
     <p [translate]="'SCORE'" [translateParams]="{ value: score }"></p>
     <p [translate]="'CLICKS'" [translateParams]="{ value: guessRatio }"></p>
   </div>
-
-  
-
 </ion-content>

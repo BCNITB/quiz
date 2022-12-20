@@ -25,7 +25,7 @@ export class QuizService {
     return value.answer;
   }
 
-  setGuessed(value){
+  /*setGuessed(value){
     value.guessed = 1;
   }
 
@@ -47,5 +47,5 @@ export class QuizService {
 
   getScore(value){
     return value.points
-  }
+  }*/
 }

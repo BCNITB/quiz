@@ -12,10 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'geography',
-    loadChildren: () => import('./pages/geography/geography.module').then( m => m.GeographyPageModule)
-  },
-  {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -26,7 +22,16 @@ const routes: Routes = [
   {
     path: 'finish-game',
     loadChildren: () => import('./pages/finish-game/finish-game.module').then( m => m.FinishGamePageModule)
+  },
+  {
+    path: 'primaria',
+    loadChildren: () => import('./pages/primaria/primaria.module').then( m => m.PrimariaPageModule)
+  },  {
+    path: 'secundaria',
+    loadChildren: () => import('./pages/secundaria/secundaria.module').then( m => m.SecundariaPageModule)
   }
+
+
 
 ];
 

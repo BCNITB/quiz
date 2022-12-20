@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { SecundariaPageRoutingModule } from './secundaria-routing.module';
 
-import { HomePage } from './home.page';
+import { SecundariaPage } from './secundaria.page';
 
+// Components
 import { ComponentsModule } from 'src/app/components/components.module';
 
+//LANGUAGE
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -23,7 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    SecundariaPageRoutingModule,
     ComponentsModule,
     TranslateModule.forChild({
       loader: {
@@ -33,6 +35,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  declarations: [HomePage]
+  declarations: [SecundariaPage]
 })
-export class HomePageModule {}
+export class SecundariaPageModule {}

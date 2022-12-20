@@ -1,23 +1,27 @@
 {
     "SETTINGS": {
-        "TITLE": "Ezarpena",
-        "LBL": "Aukeratu hizkuntza bat",
-        "BTN": "Gorde"
+        "TITLE":        "Ezarpena",
+        "LBL":          "Aukeratu hizkuntza bat",
+        "BTN":          "Gorde"
     },
     "HOME":{
-        "TITLE": "Hasi",
-        "WELCOME_01":"Ongi etorri galdera aplikaziora, Trivial maite baduzu edo zure gurasoen galderen erantzun guztiak ezagutzen badituzu, hau da zure aplikazioa.",
-        "WELCOME_02": "Jokatzen hasteko aukeretako bat aukeratu besterik ez duzu egin behar. Aurrera!",
-        "BTN_01": "Geografia"
+        "TITLE":        "Hasi",
+        "WELCOME_01":   "Ongi etorri galdera aplikaziora, Trivial maite baduzu edo zure gurasoen galderen erantzun guztiak ezagutzen badituzu, hau da zure aplikazioa.",
+        "WELCOME_02":   "Jokatzen hasteko aukeretako bat aukeratu besterik ez duzu egin behar. Aurrera!",
+        "BTN_01":       "Lehen mailakoa",
+        "BTN_02":       "Bigarren mailakoa"
     },
-    "GEO":{
-        "TITLE": "Geografia"
+    "PRIM":{
+        "TITLE": "Oinarrizko Galderak"
+    },
+    "SEC":{
+        "TITLE": "Batxilergoko Galderak"
     },
     "FINISH":{
-        "TITLE":    "JOKOAREN AMAIERA",
-        "BTN":      "Berriz jokatu"
+        "TITLE":        "JOKOAREN AMAIERA",
+        "BTN":          "Berriz jokatu"
     },
-    "SCORE": "Zure puntuazioa hau da: {{ value }}",
-    "CLICKS": "Zure arrakastaren ehunekoa hau da: {{ value }}%",
-    "EXITBTN":  "Utzi"
+    "SCORE":            "Zure puntuazioa hau da: {{ value }}",
+    "CLICKS":           "Zure arrakastaren ehunekoa hau da: {{ value }}%",
+    "EXITBTN":          "Utzi"
 }

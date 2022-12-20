@@ -10,17 +10,17 @@ import { QuizService } from 'src/app/services/quiz.service';
 
 //QUESTIONS
 import { Questions } from 'src/app/interfaces/questions';
-import { CA_QUESTIONS } from 'src/app/enums/ca.data.geography';
-import { ES_QUESTIONS } from 'src/app/enums/es.data.geography';
-import { EU_QUESTIONS } from 'src/app/enums/eu.data.geography';
-import { GL_QUESTIONS } from 'src/app/enums/gl.data.geography';
+import { CA_PRIM_QUESTIONS } from 'src/app/enums/ca.data.primaria';
+import { ES_PRIM_QUESTIONS } from 'src/app/enums/es.data.primaria';
+import { EU_PRIM_QUESTIONS } from 'src/app/enums/eu.data.primaria';
+import { GL_PRIM_QUESTIONS } from 'src/app/enums/gl.data.primaria';
 
 @Component({
-  selector: 'app-geography',
-  templateUrl: './geography.page.html',
-  styleUrls: ['./geography.page.scss'],
+  selector: 'app-primaria',
+  templateUrl: './primaria.page.html',
+  styleUrls: ['./primaria.page.scss'],
 })
-export class GeographyPage implements OnInit {
+export class PrimariaPage implements OnInit {
 
   questions:  Questions[]=[];
 
@@ -38,10 +38,13 @@ export class GeographyPage implements OnInit {
   countGuess:   number;
   guessRatio:   number;
 
+  showCorrect:  boolean;
+  showWrong:    boolean;
+
   constructor(
-    public quiz: QuizService,
+    public quiz:        QuizService,
     private _translate: TranslateService,
-    private navCtrl: NavController,
+    private navCtrl:    NavController,
   ) {
     this.language="";
     this.score=0;
@@ -59,21 +62,24 @@ export class GeographyPage implements OnInit {
     
     switch(this.language){
       case "ca":
-        this.questions=CA_QUESTIONS.slice(0);
+        this.questions=CA_PRIM_QUESTIONS.slice(0);
         break;
       
       case "es":
-        this.questions=ES_QUESTIONS.slice(0);
+        this.questions=ES_PRIM_QUESTIONS.slice(0);
         break;
 
       case "eu":
-        this.questions=EU_QUESTIONS.slice(0);
+        this.questions=EU_PRIM_QUESTIONS.slice(0);
         break;
 
       case "gl":
-        this.questions=GL_QUESTIONS.slice(0);
+        this.questions=GL_PRIM_QUESTIONS.slice(0);
         break;
     }
+
+    this.showCorrect=false;
+    this.showWrong=false;
   }
 
   ngOnInit() {
@@ -135,35 +141,44 @@ export class GeographyPage implements OnInit {
 
     
     if(correctAnswer==userAnswer){
-      this.quiz.setGuessed(this.questions[this.randNum]);
+      this.showCorrect=true;
+      this.showWrong=false;
+      //this.quiz.setGuessed(this.questions[this.randNum]);
+    }
+    else{
+      this.showCorrect=false;
+      this.showWrong=true;
     }
 
-    this.countTry(userAnswer);
+    setTimeout(() => {
+      this.countTry(userAnswer);
+    }, 1000);
   }
 
   countTry(userAnswer){
-    let counter=this.quiz.getTries(this.questions[this.randNum]);
+    //let counter=this.quiz.getTries(this.questions[this.randNum]);
 
     
-    this.quiz.setTries(this.questions[this.randNum]);
-
+    this.showCorrect=false;
+    this.showWrong=false;
     this.addScore(userAnswer);
   }
 
   addScore(userAnswer){
     let correctAnswer=this.quiz.getAnswer(this.questions[this.randNum]);
-    let countTries=this.quiz.getTries(this.questions[this.randNum]);
+    //let countTries=this.quiz.getTries(this.questions[this.randNum]);
 
     if(userAnswer==correctAnswer){
+      this.score=this.score+5;
       this.countGuess++;
 
-      if(countTries==1){
+      /*if(countTries==1){
         this.quiz.setScore(this.questions[this.randNum], 5);
         this.score=this.score+5;
       } else if(countTries==2){
         this.quiz.setScore(this.questions[this.randNum], 2);
         this.score=this.score+2;
-      }
+      }*/
     }
 
     this.guessRatio=Math.round(200*(this.countGuess/this.countClicks));
@@ -175,18 +190,18 @@ export class GeographyPage implements OnInit {
     this.randNum = 0;
     this.randNum = this.calcRandom(0,this.questions.length-1);
 
-    let guessed = this.quiz.getGuessed(this.questions[this.randNum]);
+    //let guessed = this.quiz.getGuessed(this.questions[this.randNum]);
     
     
-    if(guessed == 1){
+    /*if(guessed == 1){
       this.nextQuestion();
-    }
+    }*/
 
-    let tries = this.quiz.getTries(this.questions[this.randNum]);
+    //let tries = this.quiz.getTries(this.questions[this.randNum]);
 
-    if(tries == 1){
+    /*if(tries == 1){
       this.nextQuestion();
-    }
+    }*/
 
     this.initializeApp();
   }
@@ -194,11 +209,11 @@ export class GeographyPage implements OnInit {
   checkForMoreQuestions(){
     let count=0;
 
-    for(let i=0;i<this.questions.length; i++){
+    /*for(let i=0;i<this.questions.length; i++){
       if(this.quiz.getGuessed(this.questions[i])==1 || this.quiz.getTries(this.questions[i])==1){
         count++;
       }
-    }
+    }*/
 
     console.log("QUESTIONS:", count);
 

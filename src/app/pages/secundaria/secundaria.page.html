@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title [translate]="'SEC.TITLE'"></ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content class="center">
+  <app-true *ngIf="showCorrect"></app-true>
+  <app-false *ngIf="showWrong"></app-false>
+
+  <div *ngIf="!showCorrect && !showWrong">
+    <div *ngIf="!showCorrect && !showWrong">
+      <p>{{ question }}</p>
+      
+      <div class="flex-container">
+        <ion-button (click)="getUserAnswer(opt_1)">{{ opt_1 }}</ion-button>
+        <ion-button (click)="getUserAnswer(opt_2)">{{ opt_2 }}</ion-button>
+        <ion-button (click)="getUserAnswer(opt_3)">{{ opt_3 }}</ion-button>
+      </div>
+
+      <div *ngIf="countClicks>0">
+        <p [translate]="'SCORE'" [translateParams]="{ value: score }"></p>
+        <p [translate]="'CLICKS'" [translateParams]="{ value: guessRatio }"></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

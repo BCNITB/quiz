@@ -1,23 +1,27 @@
 {
     "SETTINGS": {
-        "TITLE": "Configuración",
-        "LBL": "Selecciona un idioma",
-        "BTN": "Guardar"
+        "TITLE":        "Configuración",
+        "LBL":          "Selecciona un idioma",
+        "BTN":          "Guardar"
     },
     "HOME":{
-        "TITLE": "Inicio",
-        "WELCOME_01":"Bienvenido a la aplicación de preguntas, si te encanta el Trivial o sabes todas las respuestas a las pregiuntas de tu proge, esta es tu aplicación.",
-        "WELCOME_02": "Sólo tiene que escoger una de las opciones para empezar a jugar. ¡Adelante!",
-        "BTN_01": "Geografía"
+        "TITLE":        "Inicio",
+        "WELCOME_01":   "Bienvenido a la aplicación de preguntas, si te encanta el Trivial o sabes todas las respuestas a las pregiuntas de tu proge, esta es tu aplicación.",
+        "WELCOME_02":   "Sólo tiene que escoger una de las opciones para empezar a jugar. ¡Adelante!",
+        "BTN_01":       "Primaria",
+        "BTN_02":       "Secundaria"
     },
-    "GEO":{
-        "TITLE": "Geografía"
+    "PRIM":{
+        "TITLE": "Preguntas de Primaria"
+    },
+    "SEC":{
+        "TITLE": "Preguntas de Secundaria"
     },
     "FINISH":{
-        "TITLE":    "FINAL DE JUEGO",
-        "BTN":      "Volver a jugar"
+        "TITLE":        "FINAL DE JUEGO",
+        "BTN":          "Volver a jugar"
     },
-    "SCORE":    "Tu puntuación es: {{ value }}",
-    "CLICKS":   "Tu porcentaje de acierto es: {{ value }}%",
-    "EXITBTN":  "Salir"
+    "SCORE":            "Tu puntuación es: {{ value }}",
+    "CLICKS":           "Tu porcentaje de acierto es: {{ value }}%",
+    "EXITBTN":          "Salir"
 }
